@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Form Template</title>
+  <title>Get Even</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
   <link rel="stylesheet" href="css/main.css">
@@ -20,7 +20,7 @@
 </head>
 <body>
   <header>
-    <h1 class="page-header">Form Template</h1>
+    <h1 class="page-header">Get Even</h1>
     <nav class="topnav" id="myTopnav">
       <a href="index.html" class="active">Home</a>
       <a href="#">Link</a>
@@ -31,6 +31,8 @@
   
   <main class="wrapper">
     
+    <p>The following is an example of how we can process a user's input to dynamically change a webpage using JavaScript. It reads a number input into the text box below upon submission, and then replaces the input form with a response indicating whether or not the number was even or odd. To tell if the number is even, I made a function named <code>getEven(num)</code> that simply returns the output of <code>num % 2 == 0</code>, which returns true if even, or false if not. Try it out now!</p>
+
     
     <div id="output">
       <form method="get" action="" class="main-form">
@@ -63,6 +65,12 @@
     const queryString = window.location.search;
     let myOutput = `<div id="container">`; // will store data for display
     const urlParams = new URLSearchParams(queryString);
+
+    
+    function getEven(num) {
+      return num % 2 == 0;
+    };
+
     
     if(queryString.length > 0){//form submitted!
      let myOutput = `<div id="container">`;//will store data for display
@@ -72,7 +80,7 @@
 
            let myInput = urlParams.get("input");
 
-           myOutput += `<p>You input ${myInput}</p>`;
+           myOutput += `<p>You input an ${getEven(myInput) ? 'even' : 'odd'} number!</p>`;
        }
        myOutput += `<p><a href="index.html">CLEAR</a></p>`; 
      myOutput += `</div>`;
